@@ -39,6 +39,25 @@ RCT_EXPORT_MODULE(SplashScreen)
         frame.origin = CGPointMake(0, 0);
         loadingView.frame = frame;
     }
+    //Create image reference for the images
+    UIImage *imageOne = [UIImage imageNamed:@"splash_image1.png"];
+    UIImage *imageTwo = [UIImage imageNamed:@"splash_image2.png"];
+    UIImage *imageThree = [UIImage imageNamed:@"splash_image3.png"];
+    UIImage *imageFour = [UIImage imageNamed:@"splash_image4.png"];
+    UIImage *imageFive = [UIImage imageNamed:@"splash_image5.png"];
+    //Save in array
+    NSArray* imagesArray = [NSArray arrayWithObjects:imageOne,imageTwo,imageThree,imageFour,imageFive, nil];
+    //Select random image from array
+    NSInteger *rIndex = arc4random() % (NSUInteger)(imagesArray.count);
+    UIImage *randomImg = [imagesArray objectAtIndex:rIndex];
+    //Create image view with selected image
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:randomImg];
+    imgView.frame = CGRectMake(-10, 50, 415, 215);
+    imgView.contentMode = UIViewContentModeScaleAspectFit;
+    //Add the image view to the view
+    [loadingView addSubview:imgView];
+    [loadingView bringSubviewToFront:imgView];
+
     waiting = false;
     
     [rootView addSubview:loadingView];

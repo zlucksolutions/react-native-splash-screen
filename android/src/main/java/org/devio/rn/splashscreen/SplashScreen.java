@@ -32,6 +32,16 @@ public class SplashScreen {
                     mSplashDialog = new Dialog(activity, themeResId);
                     mSplashDialog.setContentView(R.layout.launch_screen);
                     mSplashDialog.setCancelable(false);
+                    //Get doll image view holder by id
+                    ImageView img = (ImageView) mSplashDialog.findViewById(R.id.splash_screen_image);
+                    //Array of doll images
+                    int[] ids = new int[]{R.drawable.splash_image1,R.drawable.splash_image2,R.drawable.splash_image3, R.drawable.splash_image4, R.drawable.splash_image5};
+                    //Select random image
+                    Random randomGenerator = new Random();
+                    int r= randomGenerator.nextInt(ids.length);
+                    //Set image to the view holder
+                    img.setImageResource(ids[r]);
+
                     if (fullScreen) {
                         setActivityAndroidP(mSplashDialog);
                     }

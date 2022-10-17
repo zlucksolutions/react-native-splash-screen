@@ -1,6 +1,5 @@
 # react-native-splash-screen
 
-
 [![Download](https://img.shields.io/badge/Download-v3.3.0-ff69b4.svg) ](https://www.npmjs.com/package/react-native-splash-screen)
 [ ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/crazycodeboy/react-native-splash-screen/pulls)
 [ ![react-native-splash-screen release](https://img.shields.io/github/release/crazycodeboy/react-native-splash-screen.svg?maxAge=2592000?style=flat-square)](https://github.com/crazycodeboy/GitHubPopular/releases)
@@ -13,30 +12,45 @@ A splash screen API for react-native which can programatically hide and show the
 
 ## Content
 
-- [Changes](#changes)
-- [Installation](#installation)
-- [Examples](#examples)
-- [Getting started](#getting-started)
-- [API](#api)
-- [Testing](#testing)
-- [Troubleshooting](#troubleshooting)
-- [Contribution](#contribution)
+- [react-native-splash-screen](#react-native-splash-screen)
+  - [Content](#content)
+  - [Changes](#changes)
+  - [Examples](#examples)
+  - [Installation](#installation)
+    - [First step(Download):](#first-stepdownload)
+    - [Second step(Plugin Installation):](#second-stepplugin-installation)
+      - [Automatic installation](#automatic-installation)
+      - [Manual installation](#manual-installation)
+    - [Third step(Plugin Configuration):](#third-stepplugin-configuration)
+  - [Getting started](#getting-started)
+    - [Android:](#android)
+    - [iOS](#ios)
+  - [Usage](#usage)
+  - [API](#api)
+  - [Testing](#testing)
+    - [Jest](#jest)
+  - [Troubleshooting](#troubleshooting)
+    - [Splash screen always appears stretched/distorted](#splash-screen-always-appears-stretcheddistorted)
+  - [Extra mandatory steps to have custom random image](#extra-mandatory-steps-to-have-custom-random-image)
+  - [Contribution](#contribution)
 
+**DO NOT USE THIS FORK IF NOT HAVING CUSTOM IMAGES:**
 
 ## Changes
+
 For React Native >= 0.47.0 use [v3.+](https://github.com/crazycodeboy/react-native-splash-screen/releases), for React Native < 0.47.0 use [v2.1.0](https://github.com/crazycodeboy/react-native-splash-screen/releases/tag/v1.0.9)
 
-## Examples  
-* [Examples](https://github.com/crazycodeboy/react-native-splash-screen/tree/master/examples)
+## Examples
+
+- [Examples](https://github.com/crazycodeboy/react-native-splash-screen/tree/master/examples)
 
 ![react-native-splash-screen-Android](https://raw.githubusercontent.com/crazycodeboy/react-native-splash-screen/v3.0.0/examples/Screenshots/react-native-splash-screen-Android.gif)
 ![react-native-splash-screen-iOS](https://raw.githubusercontent.com/crazycodeboy/react-native-splash-screen/v3.0.0/examples/Screenshots/react-native-splash-screen-iOS.gif)
 
-
-
 ## Installation
 
 ### First step(Download):
+
 Run `npm i react-native-splash-screen --save`
 
 ### Second step(Plugin Installation):
@@ -45,13 +59,14 @@ Run `npm i react-native-splash-screen --save`
 
 `react-native link react-native-splash-screen` or `rnpm link react-native-splash-screen`
 
-#### Manual installation  
+#### Manual installation
 
 **Android:**
 
 1. In your `android/settings.gradle` file, make the following additions:
+
 ```java
-include ':react-native-splash-screen'   
+include ':react-native-splash-screen'
 project(':react-native-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-splash-screen/android')
 ```
 
@@ -65,7 +80,7 @@ dependencies {
 }
 ```
 
-3. Update the MainApplication.java file to use `react-native-splash-screen` via the following changes:   
+3. Update the MainApplication.java file to use `react-native-splash-screen` via the following changes:
 
 ```java
 // react-native-splash-screen >= 0.3.1
@@ -102,7 +117,7 @@ public class MainApplication extends Application implements ReactApplication {
 1. `cd ios`
 2. `run pod install`
 
->OR
+> OR
 
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
 2. Go to `node_modules` ➜ `react-native-splash-screen` and add `SplashScreen.xcodeproj`
@@ -110,8 +125,6 @@ public class MainApplication extends Application implements ReactApplication {
 4. To fix `'RNSplashScreen.h' file not found`, you have to select your project → Build Settings → Search Paths → Header Search Paths to add:
 
    `$(SRCROOT)/../node_modules/react-native-splash-screen/ios`
-
-
 
 ### Third step(Plugin Configuration):
 
@@ -141,7 +154,6 @@ public class MainActivity extends ReactActivity {
 
 Update `AppDelegate.m` with the following additions:
 
-
 ```obj-c
 #import "AppDelegate.h"
 
@@ -165,11 +177,11 @@ Update `AppDelegate.m` with the following additions:
 
 ```
 
-## Getting started  
+## Getting started
 
 Import `react-native-splash-screen` in your JS file.
 
-`import SplashScreen from 'react-native-splash-screen'`    
+`import SplashScreen from 'react-native-splash-screen'`
 
 ### Android:
 
@@ -186,12 +198,13 @@ Create a file called `launch_screen.xml` in `app/src/main/res/layout` (create th
 
 Customize your launch screen by creating a `launch_screen.png`-file and placing it in an appropriate `drawable`-folder. Android automatically scales drawable, so you do not necessarily need to provide images for all phone densities.
 You can create splash screens in the following folders:
-* `drawable-ldpi`
-* `drawable-mdpi`
-* `drawable-hdpi`
-* `drawable-xhdpi`
-* `drawable-xxhdpi`
-* `drawable-xxxhdpi`
+
+- `drawable-ldpi`
+- `drawable-mdpi`
+- `drawable-hdpi`
+- `drawable-xhdpi`
+- `drawable-xxhdpi`
+- `drawable-xxxhdpi`
 
 Add a color called `primary_dark` in `app/src/main/res/values/colors.xml`
 
@@ -201,7 +214,6 @@ Add a color called `primary_dark` in `app/src/main/res/values/colors.xml`
     <color name="primary_dark">#000000</color>
 </resources>
 ```
-
 
 **Optional steps：**
 
@@ -222,10 +234,10 @@ Open `android/app/src/main/res/values/styles.xml` and add `<item name="android:w
 
 **To learn more see [examples](https://github.com/crazycodeboy/react-native-splash-screen/tree/master/examples)**
 
-
 If you want to customize the color of the status bar when the splash screen is displayed:
 
 Create `android/app/src/main/res/values/colors.xml` and add
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -234,6 +246,7 @@ Create `android/app/src/main/res/values/colors.xml` and add
 ```
 
 Create a style definition for this in `android/app/src/main/res/values/styles.xml`:
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -244,11 +257,12 @@ Create a style definition for this in `android/app/src/main/res/values/styles.xm
 ```
 
 Change your `show` method to include your custom style:
+
 ```java
 SplashScreen.show(this, R.style.SplashScreenTheme);
 ```
 
-### iOS    
+### iOS
 
 Customize your splash screen via `LaunchScreen.storyboard` or `LaunchScreen.xib`。
 
@@ -256,32 +270,29 @@ Customize your splash screen via `LaunchScreen.storyboard` or `LaunchScreen.xib`
 
 - [via LaunchScreen.storyboard Tutorial](https://github.com/crazycodeboy/react-native-splash-screen/blob/master/add-LaunchScreen-tutorial-for-ios.md)
 
-
 ## Usage
 
 Use like so:
 
 ```javascript
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen';
 
 export default class WelcomePage extends Component {
-
-    componentDidMount() {
-    	// do stuff while splash screen is shown
-        // After having done stuff (such as async tasks) hide the splash screen
-        SplashScreen.hide();
-    }
+  componentDidMount() {
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide();
+  }
 }
 ```
 
 ## API
 
-
-| Method | Type     | Optional | Description                         |
-|--------|----------|----------|-------------------------------------|
-| show() | function | false    | Open splash screen (Native Method ) |
+| Method                                                  | Type     | Optional | Description                         |
+| ------------------------------------------------------- | -------- | -------- | ----------------------------------- |
+| show()                                                  | function | false    | Open splash screen (Native Method ) |
 | show(final Activity activity, final boolean fullScreen) | function | false    | Open splash screen (Native Method ) |
-| hide() | function | false    | Close splash screen                 |
+| hide()                                                  | function | false    | Close splash screen                 |
 
 ## Testing
 
@@ -297,10 +308,12 @@ export default {
 }
 ```
 
-## Troubleshooting 
+## Troubleshooting
 
 ### Splash screen always appears stretched/distorted
+
 Add the ImageView with a scaleType in the `launch_screen.xml`, e.g.:
+
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
@@ -309,7 +322,7 @@ Add the ImageView with a scaleType in the `launch_screen.xml`, e.g.:
   android:layout_height="match_parent"
   android:orientation="vertical"
 >
-  <ImageView 
+  <ImageView
     android:src="@drawable/launch_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -317,6 +330,69 @@ Add the ImageView with a scaleType in the `launch_screen.xml`, e.g.:
   >
   </ImageView>
 </FrameLayout>
+```
+
+## Extra mandatory steps to have custom random image
+
+**Android:**
+
+Add image files in project's `android/src/main/res/drawable`.
+
+For e.g;
+
+![react-native-splash-screen-Android](./screenshot/android-res-folder.png)
+
+Update the `refs.xml`, add/remove references as per the requirement in/from this file:
+
+```xml
+<!--Reference for image view from launch_screen.xml file-->
+<item type="id" name="splash_screen_image"/>
+<!--Reference for image from drawable folder-->
+<item type="drawable" name="splash_image1"/>
+<item type="drawable" name="splash_image2"/>
+<item type="drawable" name="splash_image3"/>
+<item type="drawable" name="splash_image4"/>
+<item type="drawable" name="splash_image5"/>
+```
+
+Update the `SplashScreen.java`, update `ids` array with images:
+
+```java
+//Array of doll images
+int[] ids = new int[]{R.drawable.splash_image1,R.drawable.splash_image2,R.drawable.splash_image3, R.drawable.splash_image4, R.drawable.splash_image5};
+```
+
+**iOS:**
+
+Add files to Project:
+
+![react-native-splash-screen-iOS](./screenshot/ios-res.png)
+
+Update `AppDelegate.m` with the following additions:
+
+```obj-c
+// Set the splash screen to show by default.
+[RNSplashScreen show];
+```
+
+replace this with below
+
+```obj-c
+// Set the splash screen to show by default.
+[RNSplashScreen showSplash:@"SplashScreen" inRootView:rootView];
+```
+
+Update the `RNSplashScreen.m`, add/remove image variable and `imagesArray`:
+
+```obj-c
+//Create image reference for the images
+UIImage *imageOne = [UIImage imageNamed:@"splash_image1.png"];
+UIImage *imageTwo = [UIImage imageNamed:@"splash_image2.png"];
+UIImage *imageThree = [UIImage imageNamed:@"splash_image3.png"];
+UIImage *imageFour = [UIImage imageNamed:@"splash_image4.png"];
+UIImage *imageFive = [UIImage imageNamed:@"splash_image5.png"];
+//Save in array
+NSArray* imagesArray = [NSArray arrayWithObjects:imageOne,imageTwo,imageThree,imageFour,imageFive, nil];
 ```
 
 ## Contribution

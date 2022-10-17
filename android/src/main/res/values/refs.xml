@@ -3,4 +3,12 @@
     <item type="layout" name="launch_screen">
         @layout/launch_screen
     </item>
+    <!--Reference for image view from launch_screen.xml file-->
+    <item type="id" name="splash_screen_image"/>
+    <!--Reference for image from drawable folder-->
+    <item type="drawable" name="splash_image1"/>
+    <item type="drawable" name="splash_image2"/>
+    <item type="drawable" name="splash_image3"/>
+    <item type="drawable" name="splash_image4"/>
+    <item type="drawable" name="splash_image5"/>
 </resources>
