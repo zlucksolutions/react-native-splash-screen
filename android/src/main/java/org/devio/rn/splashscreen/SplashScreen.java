@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.os.Build;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
-
+import java.util.Random;
 /**
  * SplashScreen
  * 启动屏
