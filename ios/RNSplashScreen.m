@@ -52,7 +52,7 @@ RCT_EXPORT_MODULE(SplashScreen)
     UIImage *randomImg = [imagesArray objectAtIndex:rIndex];
     //Create image view with selected image
     UIImageView *imgView = [[UIImageView alloc] initWithImage:randomImg];
-    imgView.frame = CGRectMake(-15, 50, 415, 215);
+    imgView.frame = CGRectMake((loadingView.frame.size.width/2) - (415/2), 50, 415, 215);
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     //Add the image view to the view
     [loadingView addSubview:imgView];
