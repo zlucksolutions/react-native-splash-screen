@@ -11,4 +11,8 @@
     <item type="drawable" name="splash_image3"/>
     <item type="drawable" name="splash_image4"/>
     <item type="drawable" name="splash_image5"/>
+    <item type="drawable" name="splash_image6"/>
+    <item type="drawable" name="splash_image7"/>
+    <item type="drawable" name="splash_image8"/>
+    <item type="drawable" name="splash_image9"/>
 </resources>
