@@ -36,7 +36,7 @@ public class SplashScreen {
                     //Get doll image view holder by id
                     ImageView img = (ImageView) mSplashDialog.findViewById(R.id.splash_screen_image);
                     //Array of doll images
-                    int[] ids = new int[]{R.drawable.splash_image1,R.drawable.splash_image2,R.drawable.splash_image3, R.drawable.splash_image4, R.drawable.splash_image5};
+                    int[] ids = new int[]{R.drawable.splash_image1,R.drawable.splash_image2,R.drawable.splash_image3, R.drawable.splash_image4, R.drawable.splash_image5, R.drawable.splash_image6, R.drawable.splash_image7, R.drawable.splash_image8, R.drawable.splash_image9};
                     //Select random image
                     Random randomGenerator = new Random();
                     int r= randomGenerator.nextInt(ids.length);
