@@ -45,14 +45,18 @@ RCT_EXPORT_MODULE(SplashScreen)
     UIImage *imageThree = [UIImage imageNamed:@"splash_image3.png"];
     UIImage *imageFour = [UIImage imageNamed:@"splash_image4.png"];
     UIImage *imageFive = [UIImage imageNamed:@"splash_image5.png"];
+    UIImage *imageSix = [UIImage imageNamed:@"splash_image6.png"];
+    UIImage *imageSeven = [UIImage imageNamed:@"splash_image7.png"];
+    UIImage *imageEight = [UIImage imageNamed:@"splash_image8.png"];
+    UIImage *imageNine = [UIImage imageNamed:@"splash_image9.png"];
     //Save in array
-    NSArray* imagesArray = [NSArray arrayWithObjects:imageOne,imageTwo,imageThree,imageFour,imageFive, nil];
+    NSArray* imagesArray = [NSArray arrayWithObjects:imageOne,imageTwo,imageThree,imageFour,imageFive,imageSix,imageSeven,imageEight,imageNine, nil];
     //Select random image from array
     NSInteger *rIndex = arc4random() % (NSUInteger)(imagesArray.count);
     UIImage *randomImg = [imagesArray objectAtIndex:rIndex];
     //Create image view with selected image
     UIImageView *imgView = [[UIImageView alloc] initWithImage:randomImg];
-    imgView.frame = CGRectMake((loadingView.frame.size.width/2) - (415/2), ((loadingView.frame.size.height / 2) - (215 / 2)) - 180, 415, 215);
+    imgView.frame = CGRectMake((loadingView.frame.size.width/2) - (415/2), ((loadingView.frame.size.height / 2) - (215 / 2)) - 160, 415, 215);
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     //Add the image view to the view
     [loadingView addSubview:imgView];
