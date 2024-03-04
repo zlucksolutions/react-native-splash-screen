@@ -43,7 +43,6 @@ RCT_EXPORT_MODULE(SplashScreen)
             UIImage *imageImg = [dataArray objectAtIndex:0];
             [self displaySplashImage:imageImg inRootView:rootView verticalOffset:verticalOffset];
         }
-         [RNSplashScreen updateFirstInstallFlag];
     } else {
         if (isTextData) {
             // Display a random text from the array
