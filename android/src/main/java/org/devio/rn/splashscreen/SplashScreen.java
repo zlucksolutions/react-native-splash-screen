@@ -5,7 +5,9 @@ import android.app.Dialog;
 import android.os.Build;
 import android.view.WindowManager;
 import android.widget.ImageView;
-
+import android.widget.TextView;
+import android.content.Context;
+import android.content.SharedPreferences;
 import java.lang.ref.WeakReference;
 import java.util.Random;
 /**
@@ -19,7 +21,8 @@ import java.util.Random;
 public class SplashScreen {
     private static Dialog mSplashDialog;
     private static WeakReference<Activity> mActivity;
-
+    private static final String PREFS_NAME = "MyPrefsFile";
+    private static final String KEY_FIRST_INSTALL = "firstInstall";
     /**
      * 打开启动屏
      */
@@ -33,15 +36,57 @@ public class SplashScreen {
                     mSplashDialog = new Dialog(activity, themeResId);
                     mSplashDialog.setContentView(R.layout.launch_screen);
                     mSplashDialog.setCancelable(false);
+
+                    // For Random Image
                     //Get doll image view holder by id
                     ImageView img = (ImageView) mSplashDialog.findViewById(R.id.splash_screen_image);
                     //Array of doll images
-                    int[] ids = new int[]{R.drawable.splash_image1,R.drawable.splash_image2,R.drawable.splash_image3, R.drawable.splash_image4, R.drawable.splash_image5, R.drawable.splash_image6, R.drawable.splash_image7, R.drawable.splash_image8, R.drawable.splash_image9};
+                    int[] ids = new int[]{R.drawable.splash_image1,R.drawable.splash_image2,R.drawable.splash_image3, R.drawable.splash_image4, R.drawable.splash_image5, R.drawable.splash_image6, R.drawable.splash_image7, R.drawable.splash_image8, R.drawable.splash_image9,R.drawable.splash_image10};
                     //Select random image
                     Random randomGenerator = new Random();
                     int r= randomGenerator.nextInt(ids.length);
                     //Set image to the view holder
                     img.setImageResource(ids[r]);
+
+                    // For Random Quote
+                    // Get TextView view holder by id
+                    TextView txt = (TextView) mSplashDialog.findViewById(R.id.quote_text);
+
+                    // Array of text options
+                    String[] texts = new String[]{
+                        "Be inspired. Be empowered. Be love.",
+                        "Rest and self-care are so important.",
+                        "Loving yourself is life-changing.",
+                        "You are a very special person.",
+                        "You were born to be a champion.",
+                        "Embrace your self-care.",
+                        "You have success born in you.",
+                        "You can change your world.",
+                        "You can do it if you believe you can.",
+                        "Self-care is empowerment.",
+                        "Treat yourself with love, everyday.",
+                        "You are your priority.",
+                        "You are loved!",
+                        "Self-care is looking after yourself.",
+                        "Make your happiness a priority.",
+                        "Self-respect, self-worth & self-love.",
+                        "Be you, love you. All ways, always.",
+                        "Never give up!",
+                        "Self-care is never a selfish act.",
+                        "Take the time to love yourself.",
+                        "Self-care equals success."
+                    };
+                    //Select random text
+                    Random randomGeneratorTextNumber = new Random();
+                    int rText= randomGeneratorTextNumber.nextInt(texts.length);
+                    //Set text to the view holder
+                    if (isFirstInstall(activity)) {
+                         txt.setText(texts[0]);
+                        // Perform actions for the first install
+                        setFirstInstallFlag(activity, false); // Update flag to indicate subsequent launches
+                    } else {
+                        txt.setText(texts[rText]);
+                    }
 
                     if (fullScreen) {
                         setActivityAndroidP(mSplashDialog);
@@ -114,5 +159,16 @@ public class SplashScreen {
                 dialog.getWindow().setAttributes(lp);
             }
         }
+    }
+    private static boolean isFirstInstall(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getBoolean(KEY_FIRST_INSTALL, true);
+    }
+
+    private static void setFirstInstallFlag(Context context, boolean isFirstInstall) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(KEY_FIRST_INSTALL, isFirstInstall);
+        editor.apply();
     }
 }

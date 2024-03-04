@@ -5,6 +5,7 @@
     </item>
     <!--Reference for image view from launch_screen.xml file-->
     <item type="id" name="splash_screen_image"/>
+    <item type="id" name="quote_text"/>
     <!--Reference for image from drawable folder-->
     <item type="drawable" name="splash_image1"/>
     <item type="drawable" name="splash_image2"/>
@@ -15,4 +16,5 @@
     <item type="drawable" name="splash_image7"/>
     <item type="drawable" name="splash_image8"/>
     <item type="drawable" name="splash_image9"/>
+    <item type="drawable" name="splash_image10"/>
 </resources>
