@@ -23,7 +23,7 @@ static UIView* loadingView = nil;
 RCT_EXPORT_MODULE(SplashScreen)
 
 + (void)showSplashImage:(NSString *)splashScreen inRootView:(UIView *)rootView withData:(NSArray *)dataArray verticalOffset:(CGFloat)verticalOffset isFirstInstallSetIndex:(BOOL)isFirstInstallSetIndex isTextData:(BOOL)isTextData{
-  
+
    if (!loadingView) {
         loadingView = [[[NSBundle mainBundle] loadNibNamed:splashScreen owner:self options:nil] objectAtIndex:0];
         CGRect frame = rootView.frame;
@@ -33,14 +33,14 @@ RCT_EXPORT_MODULE(SplashScreen)
     // Check if it's the first install
     // BOOL isFirstInstall = [[NSUserDefaults standardUserDefaults] boolForKey:@"FirstInstall"];
     BOOL isFirstInstall = [RNSplashScreen isFirstTime];
-    if (isFirstInstall && isFirstInstallSetIndex && isTextData) {
+    if (isFirstInstall && isFirstInstallSetIndex) {
         if(isTextData){
             // Display the first text from the array
             NSString *firstText = [dataArray objectAtIndex:0];
             [self displaySplashText:firstText inRootView:rootView verticalOffset:verticalOffset];
         }else{ 
             // Display the first Image from the array
-            UIImage *imageImg = [dataArray objectAtIndex:0];
+            UIImage *imageImg = [dataArray objectAtIndex:1];
             [self displaySplashImage:imageImg inRootView:rootView verticalOffset:verticalOffset];
         }
     } else {
@@ -144,7 +144,7 @@ RCT_EXPORT_MODULE(SplashScreen)
     
     NSArray* textsArray2 = @[textDefault,textOne,textTwo,textThree,textFour,textFive,textSix,textSeven,textEight,textNine,textTen,textEleven,textTwelve,textThirteen,textFourteen,textFifteen,textSixteen,textSeventeen,textEighteen,textNineteen,textTwenty];
     // Show splash screen with images from the first array
-    [RNSplashScreen showSplashImage:splashScreen inRootView:rootView withData:imagesArray1 verticalOffset:-160 isFirstInstallSetIndex:false isTextData:false];
+    [RNSplashScreen showSplashImage:splashScreen inRootView:rootView withData:imagesArray1 verticalOffset:-160 isFirstInstallSetIndex:true isTextData:false];
 
     // Show splash screen with images from the second array
     [RNSplashScreen showSplashImage:splashScreen inRootView:rootView withData:textsArray2 verticalOffset:32 isFirstInstallSetIndex:true isTextData:true];

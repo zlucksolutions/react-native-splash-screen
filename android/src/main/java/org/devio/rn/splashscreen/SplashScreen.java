@@ -42,11 +42,11 @@ public class SplashScreen {
                     ImageView img = (ImageView) mSplashDialog.findViewById(R.id.splash_screen_image);
                     //Array of doll images
                     int[] ids = new int[]{R.drawable.splash_image1,R.drawable.splash_image2,R.drawable.splash_image3, R.drawable.splash_image4, R.drawable.splash_image5, R.drawable.splash_image6, R.drawable.splash_image7, R.drawable.splash_image8, R.drawable.splash_image9,R.drawable.splash_image10};
-                    //Select random image
+                    // //Select random image
                     Random randomGenerator = new Random();
                     int r= randomGenerator.nextInt(ids.length);
-                    //Set image to the view holder
-                    img.setImageResource(ids[r]);
+                    // //Set image to the view holder
+                    // img.setImageResource(ids[r]);
 
                     // For Random Quote
                     // Get TextView view holder by id
@@ -82,10 +82,12 @@ public class SplashScreen {
                     //Set text to the view holder
                     if (isFirstInstall(activity)) {
                          txt.setText(texts[0]);
+                         img.setImageResource(ids[1]);
                         // Perform actions for the first install
                         setFirstInstallFlag(activity, false); // Update flag to indicate subsequent launches
                     } else {
                         txt.setText(texts[rText]);
+                        img.setImageResource(ids[r]);
                     }
 
                     if (fullScreen) {
